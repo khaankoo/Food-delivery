@@ -1,25 +1,28 @@
-import Icon from '@/image/Icon'
-import React from 'react'
-import TextField from '@mui/material/TextField';
-import Basket from '@/image/Basket';
-import User from '@/image/User';
+import Icon from "@/image/Icon";
+import React from "react";
+import Basket from "@/image/Basket";
+import User from "@/image/User";
+import { Stack } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
 
 const Navbar = () => {
   return (
-    <div className='flex justify-between items-center py-2 mx-auto max-w-screen-2xl'>
-      <div className='flex gap-14'>
+    <Stack sx={{ flexDirection: "row", width: 1536, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto"}}>
+      <Stack direction={"row"} gap={4}>
         <Icon />
-        <button>НҮҮР</button>
-        <button>ХООЛНЫ ЦЭС</button>
-        <button>ХҮРГЭЛИЙН БҮС</button>
-      </div>
-      <div className='flex gap-14'>
-        <input type="text" className='border p-1 w-64 rounded-md' placeholder='Хайх'/>
-        <button className='flex gap-2'><Basket /> Сагс</button>
-        <button className='flex gap-2'><User /> Нэвтрэх</button>
-      </div>
-    </div>
-  )
-}
+        <Button size="medium" sx={{ color: "black" }}>НҮҮР</Button>
+        <Button size="medium" sx={{ color: "black" }}>ХООЛНЫ ЦЭС</Button>
+        <Button size="medium" sx={{ color: "black" }}>ХҮРГЭЛИЙН БҮС</Button>
+      </Stack>
+      <Stack direction={"row"} gap={4}>
+        <TextField id="outlined-basic" label="Хайх" variant="outlined" sx={{ width: 280, paddingY: 0, border: "black"}}/>
+        <Button size="medium" sx={{ color: "black", gap: 1 }}><Basket /> Сагс</Button>
+        <Button size="medium" sx={{ color: "black", gap: 1 }}><User /> Нэвтрэх</Button>
+      </Stack>
+    </Stack>
+  );
+};
 
 export default Navbar

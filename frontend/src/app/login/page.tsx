@@ -1,55 +1,84 @@
-"use client"
+"use client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import * as React from 'react';
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-// import Visibility from '@mui/icons-material/Visibility';
-// import VisibilityOff from '@mui/icons-material/VisibilityOff';
-const page = () => {
+import * as React from "react";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import TextField from "@mui/material/TextField";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { Stack } from "@mui/material";
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+const Page = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {setOpen(true)}
+  const handleClose = () => {setOpen(false)}
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
   };
   return (
-    <div>
+    <Stack sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
       <Navbar />
-      <div className="flex my-[100px] justify-center flex-col items-center">
-        <h1 className="text-center">Нэвтрэх</h1>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="">Имэйл</label>
-          <input type="text" className="border rounded-lg w-72 p-2" placeholder="Имэйл хаягаа оруулна уу"/>
-          <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
+      <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 3, marginY: 10 }}>
+        <Box sx={{ fontSize: 25, fontWeight: "semibold"}}>Нэвтрэх</Box>
+        <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
+          <label htmlFor="">Нэр</label>
+          <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" />
+        </Box>
+        <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
+          <label htmlFor="">Нууц үг</label>
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">Нууц үгээ оруулна уу</InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
+              endAdornment={
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
+                  edge="end">
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-        </div>
-      </div>
+              </InputAdornment>}
+            label="Нууц үг"/>
+            <Button size="small" sx={{ color: "black", justifyContent: "end", width: 145 }}>Нууц үг сэргээх</Button>
+          </FormControl>
+        </Box>
+        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }}>Нэвтрэх</Button>
+        <Box>Эсвэл</Box>
+        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: 1 }}>Нэвтрэх</Button>
+      </Stack>
       <Footer />
-    </div>
+    </Stack>
   );
 };
 
-export default page;
+export default Page;
