@@ -74,8 +74,24 @@ const Page = () => {
         </Box>
         <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }}>Нэвтрэх</Button>
         <Box>Эсвэл</Box>
-        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: 1 }}>Нэвтрэх</Button>
+        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: 1 }}>Бүртгүүлэх</Button>
       </Stack>
+      <button onClick={handleOpen}>hairaa</button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
       <Footer />
     </Stack>
   );

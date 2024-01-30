@@ -9,12 +9,12 @@ import TextField from "@mui/material/TextField";
 
 const Navbar = () => {
   return (
-    <Stack sx={{ flexDirection: "row", width: 1536, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto"}}>
+    <Stack sx={{ flexDirection: "row", width: 1280, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto"}}>
       <Stack direction={"row"} gap={4}>
         <Icon />
-        <Button size="medium" sx={{ color: "black" }}>НҮҮР</Button>
-        <Button size="medium" sx={{ color: "black" }}>ХООЛНЫ ЦЭС</Button>
-        <Button size="medium" sx={{ color: "black" }}>ХҮРГЭЛИЙН БҮС</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>НҮҮР</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХООЛНЫ ЦЭС</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХҮРГЭЛИЙН БҮС</Button>
       </Stack>
       <Stack direction={"row"} gap={4}>
         <TextField id="outlined-basic" label="Хайх" variant="outlined" sx={{ width: 280, paddingY: 0, border: "black"}}/>

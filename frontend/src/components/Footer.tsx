@@ -28,7 +28,7 @@ const Footer = () => {
         <Insta />
         <Twitter />
       </Box>
-      <Box sx={{ color: "white", textAlign: "center", paddingTop: 4, borderTop: 2, width: 1536}}>
+      <Box sx={{ color: "white", textAlign: "center", paddingTop: 4, borderTop: 2, width: 1200 }}>
         <Box>© 2024 Pinecone Foods LLC </Box>
         <Box>Зохиогчийн эрх хуулиар хамгаалагдсан.</Box>
       </Box>
