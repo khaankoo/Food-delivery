@@ -23,7 +23,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: '10px',
   boxShadow: 24,
   p: 4,
 };
@@ -44,7 +44,7 @@ const Page = () => {
   };
   return (
     <Stack sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-      <Navbar />
+      <Navbar onClick={handleOpen}/>
       <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 3, marginY: 10 }}>
         <Box sx={{ fontSize: 25, fontWeight: "semibold"}}>Нэвтрэх</Box>
         <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
@@ -74,9 +74,8 @@ const Page = () => {
         </Box>
         <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }}>Нэвтрэх</Button>
         <Box>Эсвэл</Box>
-        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: 1 }}>Бүртгүүлэх</Button>
+        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }}>Бүртгүүлэх</Button>
       </Stack>
-      <button onClick={handleOpen}>hairaa</button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -84,12 +83,37 @@ const Page = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 3 }}>
+            <Box sx={{ fontSize: 25, fontWeight: "semibold" }}>Нэвтрэх</Box>
+            <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
+              <label htmlFor="">Нэр</label>
+              <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" />
+            </Box>
+            <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
+              <label htmlFor="">Нууц үг</label>
+              <FormControl variant="outlined" sx={{ width: 384 }}>
+                <InputLabel htmlFor="outlined-adornment-password">Нууц үгээ оруулна уу</InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end">
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>}
+                label="Нууц үг"/>
+                <Button size="small" sx={{ display: "flex", color: "black", justifyContent: "end", width: 145, bgcolor: "#EEEFF2" }}>Нууц үг сэргээх</Button>
+              </FormControl>
+            </Box>
+            <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }}>Нэвтрэх</Button>
+            <Box>Эсвэл</Box>
+            <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }}>Бүртгүүлэх</Button>
+          </Stack>
         </Box>
       </Modal>
       <Footer />

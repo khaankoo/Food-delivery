@@ -12,6 +12,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { Box, Stack, Typography } from "@mui/material";
 
 const page = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -24,19 +25,19 @@ const page = () => {
     event.preventDefault();
   };
   return (
-    <div>
+    <Stack sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
       <Navbar />
-      <div className="flex flex-col justify-center items-center w-96 mx-auto gap-5 my-[91px]">
-        <h1 className="text-2xl font-semibold">Бүртгүүлэх</h1>
-        <div className="flex flex-col gap-2 w-full">
+      <Stack sx={{ alignItems: "center", marginY: 10 }}>
+        <Typography>Бүртгүүлэх</Typography>
+        <Box sx={{ display: "flex", gap: 2, flexDirection: "column" }}>
           <label htmlFor="">Нэр</label>
           <TextField id="outlined-basic" label="Нэрээ оруулна уу" variant="outlined" />
-        </div>
-        <div className="flex flex-col gap-2 w-full">
+        </Box>
+        <Box>
           <label htmlFor="">Имэйл</label>
           <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" />
-        </div>
-        <div className="flex flex-col gap-2 w-full">
+        </Box>
+        <Box>
           <label htmlFor="">Нууц үг</label>
           <FormControl variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">
@@ -60,12 +61,10 @@ const page = () => {
               label="Нууц үг"
             />
           </FormControl>
-        </div>
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Үйлчилгээний нөхцөл зөвшөөрөх" />
-        <button className="border bg-slate-100 text-gray-300 p-3 rounded-md w-full">Бүртгүүлэх</button>
-      </div>
+        </Box>
+      </Stack>
       <Footer />
-    </div>
+    </Stack>
   );
 };
 
