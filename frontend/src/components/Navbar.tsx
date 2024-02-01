@@ -17,7 +17,7 @@ const Navbar = ({onClick}: any) => {
         <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХҮРГЭЛИЙН БҮС</Button>
       </Stack>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
-        <TextField id="outlined-basic" label="Хайх" variant="outlined" sx={{ width: 280, paddingY: 0, border: "black"}}/>
+        <TextField id="outlined-basic" label="Хайх" variant="outlined" sx={{ width: 280, paddingY: 0, border: "black" }}/>
         <Button size="medium" sx={{ color: "black", gap: 2 }}><Basket /> Сагс</Button>
         <Button size="medium" sx={{ color: "black", gap: 2 }} onClick={onClick}><User /> Нэвтрэх</Button>
       </Stack>

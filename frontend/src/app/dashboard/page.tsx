@@ -1,17 +1,19 @@
 "use client"
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import Sales from '@/utils/Sales'
+import InfoCard from '@/utils/infoCard'
+import { Stack } from '@mui/material'
 import React from 'react'
 
 const Page = () => {
   return (
-    <div>
-        <Navbar />
-        <div>
-            
-        </div>
-        <Footer />
-    </div>
+    <Stack>
+      <Navbar />
+      <InfoCard />
+      <Sales />
+      <Footer />
+    </Stack>
   )
 }
 

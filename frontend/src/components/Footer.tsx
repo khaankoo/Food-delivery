@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <Stack sx={{ background: "#18BA51", height: 450, width: "screen", padding: 6, flexDirection: "column", alignItems: "center", gap: 5 }}>
       <Box sx={{ flexDirection: "row", width: 200, display: "flex", gap: 2 }}>
-        <White />
+        {/* <White /> */}
         <Box sx={{ color: 'white', fontSize: 21 }}>Food Delivery</Box>
       </Box>
       <Box sx={{ display: "flex", gap: 10 }}>
