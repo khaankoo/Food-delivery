@@ -65,6 +65,7 @@ const SignUp = () => {
         }, 3000);
       } else if (res.data.success === false) {
         alert("Already existing Username")
+        return
       }
     } catch (error) {
       setError("Invalid request");

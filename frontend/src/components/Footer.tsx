@@ -7,6 +7,13 @@ import Face from '@/image/Face';
 import Insta from '@/image/Insta';
 import Twitter from '@/image/Twitter';
 
+const  styles = {
+  white : {
+    color: "white"
+  }
+}
+
+const footerMenu = ["НҮҮР", "Холбоо барих"]
 
 const Footer = () => {
   return (
@@ -16,12 +23,12 @@ const Footer = () => {
         <Box sx={{ color: 'white', fontSize: 21 }}>Food Delivery</Box>
       </Box>
       <Box sx={{ display: "flex", gap: 10 }}>
-        <Button size="medium" sx={{ color: "white" }}>НҮҮР</Button>
-        <Button size="medium" sx={{ color: "white" }}>Холбоо барих</Button>
-        <Button size="medium" sx={{ color: "white" }}>Хоолны цэс</Button>
-        <Button size="medium" sx={{ color: "white" }}>Үйлчилгээний нөхцөл</Button>
-        <Button size="medium" sx={{ color: "white" }}>Хүргэлтийн бүс</Button>
-        <Button size="medium" sx={{ color: "white" }}>Нууцлалын бодлого</Button>
+        <Button size="medium" sx={styles.white}>НҮҮР</Button>
+        <Button size="medium" sx={styles.white}>Холбоо барих</Button>
+        <Button size="medium" sx={styles.white}>Хоолны цэс</Button>
+        <Button size="medium" sx={styles.white}>Үйлчилгээний нөхцөл</Button>
+        <Button size="medium" sx={styles.white}>Хүргэлтийн бүс</Button>
+        <Button size="medium" sx={styles.white}>Нууцлалын бодлого</Button>
       </Box>
       <Box sx={{ flexDirection: "row", gap: 4, display: "flex" }}>
         <Face />
