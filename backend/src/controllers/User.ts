@@ -25,6 +25,7 @@ export const signUp = async (req: Request, res: Response) => {
       console.log(result);
       return res.status(201).send({ success: true });
     } catch (error) {
+      console.log(error, 'error')
       return res.status(400).send({
         success: false,
         error: {
@@ -37,63 +38,27 @@ export const signUp = async (req: Request, res: Response) => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-// export const logIn = async (req: Request, res: Response) => {
-//   try {
-//     const { useremail, password } : { useremail: string, password: string } = req.body;
-
-//     const user: logInType | null = await UserModel.findOne({ useremail });
-
-//     if (!user) {
-//       return res.status(400).send({ success: false, msg: "User not found"})
-//     }
-
-//     bcrypt.compare( password, user.password, async function (err, result) {
-//       if (!result) {
-//         return res.send({
-//           success: false,
-//           msg: "UserEmail or Password incorrect"
-//         })
-//       } else {
-//         return res.send({ success: true })
-//       }
-//     })
-//   } catch (error) {
-//     console.log("error");
-//   }
-// }
-
 export const logIn = async (req: Request, res: Response) => {
   try {
-    const { username, password }: { username: string; password: string } =
-      req.body;
+    const { useremail, password } : { useremail: string, password: string } = req.body;
 
-    const user: logInType | null = await UserModel.findOne({ username });
+    const user: logInType | null = await UserModel.findOne({ useremail });
 
     if (!user) {
-      return res.status(400).send({ success: false, msg: "User not found" });
+      return res.status(400).send({ success: false, msg: "User not found"})
     }
 
-    bcrypt.compare(password, user.password, async function (err, result) {
+    bcrypt.compare( password, user.password, async function (err, result) {
       if (!result) {
         return res.send({
           success: false,
-          msg: "Username or Password incorrect",
-        });
+          msg: "UserEmail or Password incorrect"
+        })
       } else {
-        return res.send({ success: true });
+        return res.send({ success: true })
       }
-    });
+    })
   } catch (error) {
-    console.error(error);
+    console.log("error");
   }
-};
+}
