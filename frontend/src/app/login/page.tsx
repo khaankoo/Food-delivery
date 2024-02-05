@@ -36,6 +36,8 @@ const Page = () => {
     email: '',
     password: ''
   });
+  console.log(input);
+  
 
   const logIn = async (e: any) => {
     try {
@@ -81,7 +83,7 @@ const Page = () => {
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
                   edge="end">
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                  { showPassword ? <Visibility /> : <VisibilityOff /> }
                 </IconButton>
               </InputAdornment>}
             label="Нууц үг" onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value}))}/>
