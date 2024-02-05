@@ -12,9 +12,11 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import TextField from "@mui/material/TextField";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Stack } from "@mui/material";
+import axios from "axios";
+import LoginModal from "@/components/LoginModal";
+import { log } from "console";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -30,8 +32,22 @@ const style = {
 
 const Page = () => {
   const [open, setOpen] = React.useState(false);
+  const [ input, setInput ] = React.useState({
+    email: '',
+    password: ''
+  });
+
+  const logIn = async (e: any) => {
+    try {
+      e.preventDefault();
+      const res = await axios.post("http://localhost:8000/users/logIn", { ...input })
+      console.log(res);
+      
+    } catch (error) {
+      console.log(error, "error");
+    }
+  } 
   const handleOpen = () => {setOpen(true)}
-  const handleClose = () => {setOpen(false)}
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -49,7 +65,7 @@ const Page = () => {
         <Box sx={{ fontSize: 25, fontWeight: "semibold"}}>Нэвтрэх</Box>
         <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
           <label htmlFor="">Нэр</label>
-          <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" />
+          <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" onChange={(e) => setInput((prev) => ({ ...prev, email: e.target.value}))}/>
         </Box>
         <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
           <label htmlFor="">Нууц үг</label>
@@ -68,54 +84,15 @@ const Page = () => {
                   {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>}
-            label="Нууц үг"/>
+            label="Нууц үг" onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value}))}/>
             <Button size="small" sx={{ color: "black", justifyContent: "end", width: 145 }}>Нууц үг сэргээх</Button>
           </FormControl>
         </Box>
-        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }}>Нэвтрэх</Button>
+        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }} onClick={logIn}>Нэвтрэх</Button>
         <Box>Эсвэл</Box>
         <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }}>Бүртгүүлэх</Button>
       </Stack>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 3 }}>
-            <Box sx={{ fontSize: 25, fontWeight: "semibold" }}>Нэвтрэх</Box>
-            <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
-              <label htmlFor="">Нэр</label>
-              <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" />
-            </Box>
-            <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
-              <label htmlFor="">Нууц үг</label>
-              <FormControl variant="outlined" sx={{ width: 384 }}>
-                <InputLabel htmlFor="outlined-adornment-password">Нууц үгээ оруулна уу</InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  type={showPassword ? "text" : "password"}
-                  endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end">
-                      {showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>}
-                label="Нууц үг"/>
-                <Button size="small" sx={{ display: "flex", color: "black", justifyContent: "end", width: 145, bgcolor: "#EEEFF2" }}>Нууц үг сэргээх</Button>
-              </FormControl>
-            </Box>
-            <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }}>Нэвтрэх</Button>
-            <Box>Эсвэл</Box>
-            <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }}>Бүртгүүлэх</Button>
-          </Stack>
-        </Box>
-      </Modal>
+      { open && ( <LoginModal /> )}
       <Footer />
     </Stack>
   );

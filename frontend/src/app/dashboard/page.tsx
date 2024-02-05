@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import LoginModal from '@/components/LoginModal'
 import Navbar from '@/components/Navbar'
+import Category from '@/utils/Category'
 import Sales from '@/utils/Sales'
 import InfoCard from '@/utils/infoCard'
 import { Stack } from '@mui/material'
@@ -21,6 +22,7 @@ const Page = () => {
       <InfoCard />
       <Sales />
       { open && ( <LoginModal /> )}
+      <Category />
       <Footer />
     </Stack>
   )

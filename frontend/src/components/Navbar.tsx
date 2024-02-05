@@ -1,5 +1,5 @@
 import Icon from "@/image/Icon";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Basket from "@/image/Basket";
 import User from "@/image/User";
 import { Stack } from "@mui/material";
@@ -49,6 +49,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = ({onClick}: any) => {
+  const [ input, setInput ] = useState('')
   return (
     <Stack sx={{ flexDirection: "row", width: 1280, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto"}}>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
@@ -62,7 +63,7 @@ const Navbar = ({onClick}: any) => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase placeholder="Хайх" inputProps={{ 'aria-label': 'search' }}/>
+            <StyledInputBase placeholder="Хайх" inputProps={{ 'aria-label': 'search' }} value={input} onChange={(e) => setInput(e.target.value)}/>
         </Search>
         <Button size="medium" sx={{ color: "black", gap: 2 }}><Basket /> Сагс</Button>
         <Button size="medium" sx={{ color: "black", gap: 2 }} onClick={onClick}><User /> Нэвтрэх</Button>
