@@ -3,14 +3,14 @@ import cors from "cors"
 import { connectDataBase } from "./utils/database";
 import { user } from "./routes/User";
 
-const PORT = 8000;
+connectDataBase();
 
 const start = () => {
     const app = express();
     app.use(express.json())
     app.use(cors());
+    const PORT = 8000;
 
-    connectDataBase();
 
     app.use("/users", user)
 

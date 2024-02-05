@@ -9,6 +9,13 @@ const UserSchema = new mongoose.Schema({
     password: String,
     avatarImage: Buffer,
     address: String,
+    phoneNumber: {
+        type:String,
+        length: {
+            minlength: 8,
+            maxlength: 8
+        }
+    },
     role: {
         type: String,
         enum: ["Админ", "Хэрэглэгч"]
