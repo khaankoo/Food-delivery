@@ -36,8 +36,6 @@ const Page = () => {
     email: '',
     password: ''
   });
-  console.log(input);
-  
 
   const logIn = async (e: any) => {
     try {

@@ -72,7 +72,6 @@ const SignUp = () => {
       console.log(error, "error");
     }
   }
-
   return (
     <Stack sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
       <Navbar onClick={handleOpen}/>

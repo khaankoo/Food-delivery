@@ -10,7 +10,7 @@ const Sales = () => {
     <Stack sx={{ width: 1280, marginX: "auto", marginBottom: '80px' }}>
         <Box sx={{ display: 'flex', justifyContent: "space-between", width: 1280, marginX: "auto" }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <AddOutlinedIcon />
+              <AddOutlinedIcon sx={{ color: '#18BA51' }}/>
               <Typography sx={{ fontWeight: 'semibold', fontSize: '22px' }}>Хямдралтай</Typography>
             </Box>
             <Button variant="text" size='small' sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#18BA51' }}>
@@ -22,5 +22,4 @@ const Sales = () => {
     </Stack>
   )
 }
-
 export default Sales
