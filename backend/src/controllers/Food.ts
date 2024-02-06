@@ -9,3 +9,12 @@ export const newFood = async (req: Request, res: Response) => {
         console.log(error);
     }
 }
+
+export const getAllFood = async (req: Request, res: Response) => {
+    try {
+        await FoodModel.find(req.body)
+        return res.status(200).send({ success: true })
+    } catch (error) {
+        console.log(error);
+    }
+}
