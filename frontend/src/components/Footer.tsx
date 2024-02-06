@@ -1,4 +1,4 @@
-import White from '@/image/White'
+// import White from '@/image/White'
 import React from 'react'
 
 import { Box, Stack } from '@mui/material';
