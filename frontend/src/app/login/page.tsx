@@ -17,6 +17,8 @@ import { Stack } from "@mui/material";
 import axios from "axios";
 import LoginModal from "@/components/LoginModal";
 import { log } from "console";
+import { useRouter } from "next/navigation";
+import SelectInput from "@mui/material/Select/SelectInput";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -31,9 +33,10 @@ const style = {
 };
 
 const Page = () => {
+  const router = useRouter()
   const [open, setOpen] = React.useState(false);
   const [ input, setInput ] = React.useState({
-    email: '',
+    useremail: '',
     password: ''
   });
 
@@ -42,7 +45,7 @@ const Page = () => {
       e.preventDefault();
       const res = await axios.post("http://localhost:8000/users/logIn", { ...input })
       console.log(res);
-      
+      router.push("/dashboard ")
     } catch (error) {
       console.log(error, "error");
     }
@@ -65,14 +68,14 @@ const Page = () => {
         <Box sx={{ fontSize: 25, fontWeight: "semibold"}}>Нэвтрэх</Box>
         <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
           <label htmlFor="">Нэр</label>
-          <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" onChange={(e) => setInput((prev) => ({ ...prev, email: e.target.value}))}/>
+          <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" onChange={(e) => setInput((prev) => ({ ...prev, useremail: e.target.value}))}/>
         </Box>
         <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
           <label htmlFor="">Нууц үг</label>
           <FormControl variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Нууц үгээ оруулна уу</InputLabel>
             <OutlinedInput
-              id="outlined-adornment-password"
+              onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value}))}
               type={showPassword ? "text" : "password"}
               endAdornment={
               <InputAdornment position="end">
@@ -83,8 +86,7 @@ const Page = () => {
                   edge="end">
                   { showPassword ? <Visibility /> : <VisibilityOff /> }
                 </IconButton>
-              </InputAdornment>}
-            label="Нууц үг" onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value}))}/>
+              </InputAdornment>}/>
             <Button size="small" sx={{ color: "black", justifyContent: "end", width: 145 }}>Нууц үг сэргээх</Button>
           </FormControl>
         </Box>

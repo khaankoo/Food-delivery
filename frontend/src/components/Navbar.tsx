@@ -51,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar = ({onClick}: any) => {
   const [ input, setInput ] = useState('')
   return (
-    <Stack sx={{ flexDirection: "row", width: 1280, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto"}}>
+    <Stack sx={{ flexDirection: "row", width: 1280, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto" }}>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
         <Icon />
         <Button size="medium" sx={{ color: "black", ":hover": "green" }}>НҮҮР</Button>
