@@ -8,6 +8,9 @@ const page = () => {
   return (
     <Stack>
         <NavbarUser />
+        <Stack sx={{ display: 'flex', flexDirection: 'column' }}>
+
+        </Stack>
         <Footer />
     </Stack>
   )
