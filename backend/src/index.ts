@@ -4,14 +4,7 @@ import { connectDataBase } from "./utils/database";
 import { user } from "./routes/User";
 import { food } from "./routes/Food";
 import { order } from "./routes/Order";
-import {v2 as cloudinary} from 'cloudinary';
 import { category } from "./routes/Category";
-          
-cloudinary.config({ 
-  cloud_name: 'dtfqcv8qa', 
-  api_key: '849869737566728', 
-  api_secret: '***************************' 
-});
 
 connectDataBase();
 
@@ -27,7 +20,7 @@ const start = () => {
     app.use("/orders", order);
     app.use("/categories", category)
 
-    app.get("/", (req, res) => {
+    app.get("/", (_, res) => {
         res.status(200).send({ succes: true, msg: "Hello world" });
     })
     

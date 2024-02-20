@@ -2,12 +2,24 @@ import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
-    userId: ObjectId,
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        require: true
+    },
     orderNumber: Number,
-    foods: Array,
+    foods: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'food'
+    }],
     totalPrice: {
         type: Number,
         int: Number
+    },
+    payment: {
+        type: String,
+        enum: ['not paid', 'paid'],
+        default: 'Not paid'
     },
     process: String,
     createdDate: Date,
