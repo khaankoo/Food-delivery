@@ -7,6 +7,6 @@ export const newOrder = async (req: Request, res: Response) => {
         return res.status(201).send({ success: true })
     } catch (error) {
         console.log(error);
-        return res.status(400).send({ success: false})
+        res.status(500).send(error)    
     }
 }

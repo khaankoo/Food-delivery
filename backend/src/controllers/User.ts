@@ -8,7 +8,7 @@ export const signUp = async (req: Request, res: Response) => {
     await UserModel.create(req.body);
     return res.status(201).send({ success: true })
   } catch (error) {
-    return res.status(400).send({ success: false })
+    return res.status(500).send(error)
   }
 }
 
@@ -30,6 +30,6 @@ export const logIn = async (req: Request, res: Response) => {
     res.status(400).send({ success: true, token });
   } catch (error) {
     console.log(error);
-    return res.status(400).send({ error });
+    return res.status(500).send(error)
   }
 };

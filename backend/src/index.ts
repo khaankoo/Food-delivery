@@ -12,7 +12,7 @@ const start = () => {
     const app = express();
     app.use(express.json())
     app.use(cors());
-    const PORT = 8000;
+    const PORT = 8001;
 
 
     app.use("/users", user);
