@@ -39,7 +39,9 @@ const Page = () => {
     useremail: '',
     password: ''
   });
-
+  const signUp = () => {
+    router.push('signUp')
+  }
   const logIn = async (e: any) => {
     try {
       e.preventDefault();
@@ -92,7 +94,7 @@ const Page = () => {
         </Box>
         <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }} onClick={logIn}>Нэвтрэх</Button>
         <Box>Эсвэл</Box>
-        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }}>Бүртгүүлэх</Button>
+        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }} onClick={signUp}>Бүртгүүлэх</Button>
       </Stack>
       { open && ( <LoginModal /> )}
       <Footer />
