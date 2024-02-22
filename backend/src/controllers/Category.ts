@@ -3,8 +3,8 @@ import { CategoryModel } from "../models/Category";
 
 const newCategory = async (req: Request, res: Response) => {
     try {
-        await CategoryModel.create(req.body)
-        return res.status(201).send({ success: true })
+        const table = await CategoryModel.create(req.body)
+        return res.status(201).send({ success: true, table })
     } catch (error) {
         res.status(500).send(error)
     }
