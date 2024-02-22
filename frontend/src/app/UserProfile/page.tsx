@@ -14,7 +14,7 @@ const page = () => {
   return (
     <Stack>
         <NavbarUser />
-        <Stack sx={{ display: 'flex', flexDirection: 'column', height: 625, justifyContent: 'center', marginX: 'auto', gap: 5 }}>
+        <Stack sx={{ display: 'flex', flexDirection: 'column', height: 675, justifyContent: 'center', marginX: 'auto', gap: 5 }}>
           <Stack sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 3 }}>
             <Box sx={{ bgcolor: 'gray', height: 130, width: 130, borderRadius: 20 }}></Box>
             <Typography sx={{ fontSize: 30 }}>УгтахБаяр</Typography>

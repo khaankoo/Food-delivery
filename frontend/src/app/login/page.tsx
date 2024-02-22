@@ -42,6 +42,9 @@ const Page = () => {
   const signUp = () => {
     router.push('signUp')
   }
+  const forgotPass = () => {
+    router.push('/forgotPass')
+  }
   const logIn = async (e: any) => {
     try {
       e.preventDefault();
@@ -66,7 +69,7 @@ const Page = () => {
   return (
     <Stack sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
       <Navbar onClick={handleOpen}/>
-      <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 3, marginY: 10 }}>
+      <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 4, marginY: 10 }}>
         <Box sx={{ fontSize: 25, fontWeight: "semibold"}}>Нэвтрэх</Box>
         <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
           <label htmlFor="">Нэр</label>
@@ -89,7 +92,7 @@ const Page = () => {
                   { showPassword ? <Visibility /> : <VisibilityOff /> }
                 </IconButton>
               </InputAdornment>}/>
-            <Button size="small" sx={{ color: "black", justifyContent: "end", width: 145 }}>Нууц үг сэргээх</Button>
+            <Button size="small" sx={{ color: "black", justifyContent: "end", width: 145 }} onClick={forgotPass}>Нууц үг сэргээх</Button>
           </FormControl>
         </Box>
         <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }} onClick={logIn}>Нэвтрэх</Button>

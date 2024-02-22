@@ -17,7 +17,7 @@ const footerMenu = ["НҮҮР", "Холбоо барих"]
 
 const Footer = () => {
   return (
-    <Stack sx={{ background: "#18BA51", height: 450, width: "screen", padding: 6, flexDirection: "column", alignItems: "center", gap: 5 }}>
+    <Stack sx={{ background: "#18BA51", height: 400, width: "screen", padding: 6, flexDirection: "column", alignItems: "center", gap: 5 }}>
       <Box sx={{ flexDirection: "row", width: 200, display: "flex", gap: 2 }}>
         {/* <White /> */}
         <Box sx={{ color: 'white', fontSize: 21 }}>Food Delivery</Box>
