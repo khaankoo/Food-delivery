@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { useRouter } from "next/navigation";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -49,14 +50,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const NavbarUser = ({onClick}: any) => {
+  const router = useRouter()
   const [ input, setInput ] = useState('')
+
+  const home = () => {
+    router.push('/dashboard')
+  }
+  const menu = () => {
+    router.push('/menu')
+  }
+  const deliverMap = () => {
+    router.push('deliverMap')
+  }
+  
   return (
     <Stack sx={{ flexDirection: "row", width: 1280, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto" }}>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
         <Icon />
-        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>НҮҮР</Button>
-        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХООЛНЫ ЦЭС</Button>
-        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХҮРГЭЛИЙН БҮС</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }} onClick={home}>НҮҮР</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }} onClick={menu}>ХООЛНЫ ЦЭС</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }} onClick={deliverMap}>ХҮРГЭЛИЙН БҮС</Button>
       </Stack>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
         <Search>

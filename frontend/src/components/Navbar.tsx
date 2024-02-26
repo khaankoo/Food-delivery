@@ -1,8 +1,10 @@
+'use client'
 import Icon from "@/image/Icon";
 import React, { useEffect, useState } from "react";
 import Basket from "@/image/Basket";
 import User from "@/image/User";
 import { Stack } from "@mui/material";
+import { useRouter } from "next/navigation";
 import Button from "@mui/material/Button";
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
@@ -49,14 +51,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = ({onClick}: any) => {
-  const [ input, setInput ] = useState('')
+  const [ input, setInput ] = useState('');
+  const router = useRouter()
+
+  const home = () => {
+    router.push('/dashboard')
+  }
+  const menu = () => {
+    router.push('/menu')
+  }
+  const deliverMap = () => {
+    router.push('deliverMap')
+  }
+  
   return (
     <Stack sx={{ flexDirection: "row", width: 1280, justifyContent: "space-between", height: 30, alignItems: "center", paddingY: 4, margin: "auto" }}>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
         <Icon />
-        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>НҮҮР</Button>
-        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХООЛНЫ ЦЭС</Button>
-        <Button size="medium" sx={{ color: "black", ":hover": "green" }}>ХҮРГЭЛИЙН БҮС</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }} onClick={home}>НҮҮР</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }} onClick={menu}>ХООЛНЫ ЦЭС</Button>
+        <Button size="medium" sx={{ color: "black", ":hover": "green" }} onClick={deliverMap}>ХҮРГЭЛИЙН БҮС</Button>
       </Stack>
       <Stack direction={"row"} gap={4} alignItems={"center"}>
         <Search>
