@@ -12,7 +12,8 @@ import React from 'react'
 const Page = () => {
   const [ open, setOpen] = React.useState(false);
   const openModal = () => {
-    setOpen(!open)  
+    setOpen(!open) 
+    console.log(open);
   }
 
   return (

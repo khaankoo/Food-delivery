@@ -25,10 +25,10 @@ const page = () => {
     <Stack>
         <Navbar />
         <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: 1280, marginX: 'auto', marginY: 5 }}>
-            <Button variant="contained" color="success" sx={{ width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Breakfast</Button>
-            <Button variant="contained" color="success" sx={{ width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Food</Button>
-            <Button variant="contained" color="success" sx={{ width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Main Course</Button>
-            <Button variant="contained" color="success" sx={{ width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Dessert</Button>
+          <Button sx={{ border: 1, width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Breakfast</Button>
+          <Button sx={{ border: 1, width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Food</Button>
+          <Button sx={{ border: 1, width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Main Course</Button>
+          <Button sx={{ border: 1, width: 280, padding: 1, color: 'black', backgroundColor: '#18BA51' }}>Dessert</Button>
         </Stack>
         <Footer />
     </Stack>

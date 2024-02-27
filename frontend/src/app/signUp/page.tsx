@@ -62,7 +62,7 @@ const SignUp = () => {
       if (res.data.success === true) {
         setTimeout(() => {
           router.push("/dashboard")
-        }, 3000);
+        }, 2000);
       } else if (res.data.success === false) {
         alert("Already existing Username")
         return

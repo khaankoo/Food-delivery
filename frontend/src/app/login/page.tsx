@@ -10,52 +10,57 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import TextField from "@mui/material/TextField";
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 import { Stack } from "@mui/material";
 import axios from "axios";
 import LoginModal from "@/components/LoginModal";
-import { log } from "console";
 import { useRouter } from "next/navigation";
 import SelectInput from "@mui/material/Select/SelectInput";
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '10px',
+  bgcolor: "background.paper",
+  borderRadius: "10px",
   boxShadow: 24,
   p: 4,
 };
 
 const Page = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
-  const [ input, setInput ] = React.useState({
-    useremail: '',
-    password: ''
+  const [input, setInput] = React.useState({
+    useremail: "",
+    password: "",
   });
+
   const signUp = () => {
-    router.push('signUp')
-  }
+    router.push("signUp");
+  };
   const forgotPass = () => {
-    router.push('/forgotPass')
-  }
+    router.push("/forgotPass");
+  };
   const logIn = async (e: any) => {
     try {
-      e.preventDefault();
-      const res = await axios.post("http://localhost:8000/users/logIn", { ...input })
-      console.log(res);
-      router.push("/dashboard ")
+      const res = await axios.post("http://localhost:8000/users/logIn", {
+        ...input,
+      });
+      const { data } = res;
+      console.log(data);
+      router.push("/dashboard");
     } catch (error) {
-      console.log(error, "error");
+      console.log(error);
     }
-  } 
-  const handleOpen = () => {setOpen(true)}
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -67,39 +72,101 @@ const Page = () => {
     event.preventDefault();
   };
   return (
-    <Stack sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-      <Navbar onClick={handleOpen}/>
-      <Stack sx={{ display: "flex", justifyContent: "center", width: "screen", alignItems: "center", gap: 4, marginY: 10 }}>
-        <Box sx={{ fontSize: 25, fontWeight: "semibold"}}>Нэвтрэх</Box>
-        <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
+    <Stack
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <Navbar onClick={handleOpen} />
+      <Stack
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: "screen",
+          alignItems: "center",
+          gap: 4,
+          marginY: 10,
+        }}
+      >
+        <Box sx={{ fontSize: 25, fontWeight: "semibold" }}>Нэвтрэх</Box>
+        <Box
+          sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}
+        >
           <label htmlFor="">Нэр</label>
-          <TextField id="outlined-basic" label="И-мэйл хаягаа оруулна уу" variant="outlined" onChange={(e) => setInput((prev) => ({ ...prev, useremail: e.target.value}))}/>
+          <TextField
+            id="outlined-basic"
+            label="И-мэйл хаягаа оруулна уу"
+            variant="outlined"
+            onChange={(e) =>
+              setInput((prev) => ({ ...prev, useremail: e.target.value }))
+            }
+          />
         </Box>
-        <Box sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}>
+        <Box
+          sx={{ display: "flex", gap: 1, flexDirection: "column", width: 384 }}
+        >
           <label htmlFor="">Нууц үг</label>
           <FormControl variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Нууц үгээ оруулна уу</InputLabel>
+            <InputLabel htmlFor="outlined-adornment-password">
+              Нууц үгээ оруулна уу
+            </InputLabel>
             <OutlinedInput
-              onChange={(e) => setInput((prev) => ({ ...prev, password: e.target.value}))}
+              onChange={(e) =>
+                setInput((prev) => ({ ...prev, password: e.target.value }))
+              }
               type={showPassword ? "text" : "password"}
               endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end">
-                  { showPassword ? <Visibility /> : <VisibilityOff /> }
-                </IconButton>
-              </InputAdornment>}/>
-            <Button size="small" sx={{ color: "black", justifyContent: "end", width: 145 }} onClick={forgotPass}>Нууц үг сэргээх</Button>
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            <Button
+              size="small"
+              sx={{ color: "black", justifyContent: "end", width: 145 }}
+              onClick={forgotPass}
+            >
+              Нууц үг сэргээх
+            </Button>
           </FormControl>
         </Box>
-        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, backgroundColor: "#EEEFF2" }} onClick={logIn}>Нэвтрэх</Button>
+        <Button
+          size="medium"
+          sx={{
+            color: "black",
+            width: 384,
+            padding: 2,
+            backgroundColor: "#EEEFF2",
+          }}
+          onClick={logIn}
+        >
+          Нэвтрэх
+        </Button>
         <Box>Эсвэл</Box>
-        <Button size="medium" sx={{ color: "black", width: 384, padding: 2, borderColor: "#18BA51", border: "1px solid green" }} onClick={signUp}>Бүртгүүлэх</Button>
+        <Button
+          size="medium"
+          sx={{
+            color: "black",
+            width: 384,
+            padding: 2,
+            borderColor: "#18BA51",
+            border: "1px solid green",
+          }}
+          onClick={signUp}
+        >
+          Бүртгүүлэх
+        </Button>
       </Stack>
-      { open && ( <LoginModal /> )}
+      {open && <LoginModal />}
       <Footer />
     </Stack>
   );
