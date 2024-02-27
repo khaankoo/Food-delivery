@@ -27,7 +27,7 @@ export const logIn = async (req: Request, res: Response) => {
       return res.status(400).send({ msg: "Email or password incorrect" });
     }
     const token = jwt.sign({ user }, "MY_SECRET_KEY");
-    res.status(400).send({ success: true, token });
+    res.status(200).send({ success: true, token });
   } catch (error) {
     console.log(error);
     return res.status(500).send(error)

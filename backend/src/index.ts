@@ -29,8 +29,8 @@ connectDataBase();
 
 const start = () => {
     const app = express();
-    app.use(express.json())
     app.use(cors());
+    app.use(express.json())
     const PORT = 8000;
 
 
