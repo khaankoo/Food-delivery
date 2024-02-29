@@ -50,8 +50,6 @@ const Page = () => {
       const res = await axios.post("http://localhost:8000/users/logIn", {
         ...input,
       });
-      const { data } = res;
-      console.log(data);
       router.push("/dashboard");
     } catch (error) {
       console.log(error);
