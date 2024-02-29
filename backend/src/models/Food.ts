@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
+import { category } from "../routes/Category";
 
 const FoodSchema = new mongoose.Schema({
     name: String,
-    Image: String,
+    image: {
+        type: String,
+        require: true
+    },
     ingeredient: String,
     price: {
         type: Number,
@@ -11,6 +15,9 @@ const FoodSchema = new mongoose.Schema({
     Discount: {
         type: Number,
         default: 0
+    },
+    categoryName: {
+        type: String
     }
 })
 

@@ -1,7 +1,9 @@
 import { FoodModel } from "../models/Food"
 import { Request, Response } from "express"
 import {v2 as cloudinary} from 'cloudinary';
-// const public_id = `food_${timestamp}_${randomString}`;
+const timestamp = new Date().toISOString().replace(/:/g, '-');
+const randomString = Math.random().toString(36).substring(7);
+const public_id = `food_${timestamp}_${randomString}`;
           
 cloudinary.config({ 
   cloud_name: 'dtfqcv8qa', 
@@ -21,7 +23,7 @@ const newFood = async (req: Request, res: Response) => {
             ingredient: req.body.ingredient,
             price: req.body.price,
             image: cloudinaryResponse,
-            discount:req.body.discount
+            discount: req.body.discount
         })
         return res.status(201).send(table)
     } catch (error) {
