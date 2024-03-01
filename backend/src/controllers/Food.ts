@@ -1,9 +1,15 @@
 import { FoodModel } from "../models/Food"
 import { Request, Response } from "express"
 import {v2 as cloudinary} from 'cloudinary';
-const timestamp = new Date().toISOString().replace(/:/g, '-');
-const randomString = Math.random().toString(36).substring(7);
-const public_id = `food_${timestamp}_${randomString}`;
+
+type FoodType = {
+    name: string,
+    image: string,
+    ingredients: string,
+    price: number,
+    discount?: number,
+    categoryName: string
+}
           
 cloudinary.config({ 
   cloud_name: 'dtfqcv8qa', 
@@ -16,15 +22,24 @@ const newFood = async (req: Request, res: Response) => {
         const cloudinaryResponse = cloudinary.uploader.upload(req.body.image,
             { 
                 folder: 'food',
-                public_id: "public_id" 
             });
+        const { 
+            name,
+            ingredients,
+            price,
+            discount,
+            categoryName,
+        } : Required<FoodType> = req.body;
         const table = await FoodModel.create({
-            name: req.body.name,
-            ingredient: req.body.ingredient,
-            price: req.body.price,
-            image: cloudinaryResponse,
-            discount: req.body.discount
+            name: name,
+            ingredients: ingredients,
+            price: price,
+            image: (await cloudinaryResponse).secure_url,
+            discount: discount,
+            categoryName: categoryName
         })
+        table.save()
+
         return res.status(201).send(table)
     } catch (error) {
         res.status(500).send(error)

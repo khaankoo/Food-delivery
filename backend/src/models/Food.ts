@@ -7,12 +7,12 @@ const FoodSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    ingeredient: String,
+    ingredients: String,
     price: {
         type: Number,
         required: true
     },
-    Discount: {
+    discount: {
         type: Number,
         default: 0
     },
