@@ -70,9 +70,9 @@ const page = () => {
   const [ foodInput, setFoodInput ] = useState({
     name: '', 
     image: '',
-    ingeredient: '',
+    ingredients: '',
     price: '',
-    Discount: '',
+    discount: '',
     categoryName: ''
   })
   console.log(foodInput);
@@ -165,7 +165,7 @@ const page = () => {
             <Typography id="modal-modal-description" sx={{ mt: 2, mb: 1 }}>Хоолны ангилал</Typography>
             <FormControl sx={{ width: 365 }}>
               <InputLabel id="demo-multiple-name-label">Name</InputLabel>
-              <Select
+              <Select 
                 labelId="demo-multiple-name-label"
                 id="demo-multiple-name"
                 multiple
@@ -186,10 +186,13 @@ const page = () => {
               </Select>
             </FormControl>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>Хоолны орц</Typography>
-            <TextField id="outlined-basic" label="Хоолны орц" variant="outlined" sx={{ width: 365, mt: 1 }} onChange={(e) => setFoodInput((prev) => ({ ...prev, ingeredient: e.target.value }))}/>
+            <TextField id="outlined-basic" label="Хоолны орц" variant="outlined" sx={{ width: 365, mt: 1 }} onChange={(e) => setFoodInput((prev) => ({ ...prev, ingredients: e.target.value }))}/>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>Хоолны үнэ</Typography>
+            <TextField id="outlined-basic" label="Хоолны үнэ" variant="outlined" sx={{ width: 365, mt: 1 }} onChange={(e) => setFoodInput((prev) => ({ ...prev, price: e.target.value }))}/>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}><Switch {...label} /> Хямдралтай эсэх</Typography>
-            <TextField id="outlined-basic" label="" variant="outlined" sx={{ width: 365, mt: 1 }} onChange={(e) => setFoodInput((prev) => ({ ...prev, price: e.target.value }))}/>
+            <TextField id="outlined-basic" label="" variant="outlined" sx={{ width: 365, mt: 1 }} onChange={(e) => setFoodInput((prev) => ({ ...prev, discount: e.target.value }))}/>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>Хоолны зураг</Typography>
+            <input type="image" src="" alt="" onChange={(e) => setFoodInput((prev) => ({ ...prev, image: e.target.value}))}/>
             <Divider />
             <Box sx={{ display: 'flex', justifyContent: 'end', gap: 2, mt: 1 }}>
               <Button sx={{ color: '#696969' }}>Clear</Button>
